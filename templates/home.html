@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+<div class="col-sm-10">
+    <h1>Добро пожаловать на наш сайт!</h1>
+</div>
+{% endif %}
+{% if user.is_authenticated %}
+<div class="col-sm-10">
+    <h1>Добро пожаловать на наш сайт, {{user.get_full_name}}!</h1>
+    <p>На этой странице Вы сможете узнать о нашей продукции</p>
+    <ul>
+        <li><strong>Количество различных продуктов, которые Вы можете у нас заказать: </strong>{{num_product}}</li>
+        <li><strong>Количество компаний, с которыми мы сотрудничаем: </strong>{{num_company}}</li>
+        <li><strong>Количество продуктов, доступных для заказа: </strong>{{num_instance_available}}</li>
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}

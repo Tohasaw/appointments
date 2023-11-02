@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Contact!</h1>
+{{request.user}}
+<p>This is templates</p>
+<p>{{my_text}}</p>
+<p>{{my_number}}</p>
+<ul type="square">
+  {% for i in my_list %}
+    <li>элемент списка = {{i}} текущая итерация цикла = {{forloop.counter}}</li>
+  {% endfor %}
+</ul>
+<p>{{my_list}}</p>
+
+{% endblock content %}

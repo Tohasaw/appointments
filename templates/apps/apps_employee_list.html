@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-sm-10">
+    <h1>Записи на прием</h1>
+    {% for app in apps %}
+        <div>
+            <li> {{app.startTime}} {{app.endTime}} {{app.client}} {{app.workingTime.table.date}}
+            </li>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}

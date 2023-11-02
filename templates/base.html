@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" contest="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Django project</title>
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <div class="container-ffuid">
+      <div class="row">
+        <div class="col-sm-2">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'apps_customer_new' %}">Записаться на прием</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item sl-2">
+              <a class="nav-link" href="">Сейчас на сайте: {{user.get_username}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'apps_employee_list' %}">Мои приемы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}? next={{request.path}}">Выход</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}? next={{request.path}}">Вход</a>
+            </li>
+            {% endif %}
+          </ul>
+{#          {% if user.is_staff %}#}
+{#          <ul class="nav flex-column">#}
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="{% url 'all-borrowed' %}">Все заказы</a>#}
+{#            </li>#}
+{#          </ul>#}
+{#          {% endif %}#}
+        </div>
+        {% block content %}
+        <!-- Контент страницы -->
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
